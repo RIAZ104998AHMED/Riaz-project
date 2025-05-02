@@ -4,9 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const fileInfo = document.getElementById('fileInfo');
     const simpleDegrees = document.getElementById('simpleDegrees');
     const simpleRotateBtn = document.getElementById('simpleRotateBtn');
-    const advancedDegrees = document.getElementById('advancedDegrees');
     const advancedRotateBtn = document.getElementById('advancedRotateBtn');
-    const angleDisplay = document.getElementById('angleDisplay');
+    const angleInput = document.getElementById('angleInput');
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     const downloadBtn = document.getElementById('downloadBtn');
@@ -26,13 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event Listeners
     imageUpload.addEventListener('change', handleImageUpload);
     simpleRotateBtn.addEventListener('click', () => rotateImage(parseInt(simpleDegrees.value)));
-    advancedRotateBtn.addEventListener('click', () => rotateImage(parseInt(advancedDegrees.value)));
-    advancedDegrees.addEventListener('input', updateAngleDisplay);
+    advancedRotateBtn.addEventListener('click', () => {
+        let degrees = parseInt(angleInput.value);
+        if (isNaN(degrees)) degrees = 0;
+        degrees = Math.max(0, Math.min(360, degrees));
+        rotateImage(degrees);
+    });
     downloadBtn.addEventListener('click', downloadImage);
-
-    function updateAngleDisplay() {
-        angleDisplay.textContent = `${advancedDegrees.value}°`;
-    }
 
     function handleImageUpload(e) {
         const file = e.target.files[0];
