@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Image Filters</title>
+  <link rel="stylesheet" href="./design.css">
+  <script src="./color.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Image Filter App</h1>
+    <div class="upload-container">
+      <input type="file" id="imageUpload" accept="image/*">
+      <label for="imageUpload">Choose Image</label>
+    </div>
+    
+    <div class="editor">
+      <div class="image-container">
+        <canvas id="imageCanvas"></canvas>
+      </div>
+      
+      <div class="controls">
+        <div class="filter-group">
+          <h3>Basic Filters</h3>
+          <div class="filter-buttons">
+            <button data-filter="grayscale">Grayscale</button>
+            <button data-filter="sepia">Sepia</button>
+            <button data-filter="invert">Invert</button>
+            <button data-filter="vintage">Vintage</button>
+          </div>
+        </div>
+        
+        <div class="filter-group">
+          <h3>Advanced Filters</h3>
+          <div class="filter-controls">
+            <div>
+              <label for="edgeThreshold">Edge Threshold:</label>
+              <input type="range" id="edgeThreshold" min="0" max="255" value="50">
+            </div>
+            <div>
+              <label for="pixelSize">Pixel Size:</label>
+              <input type="range" id="pixelSize" min="2" max="20" value="8">
+            </div>
+          </div>
+          <div class="filter-buttons">
+            <button data-filter="edge">Edge Detect</button>
+            <button data-filter="pixelate">Pixelate</button>
+            <button data-filter="emboss">Emboss</button>
+          </div>
+        </div>
+        
+        <div class="action-buttons">
+          <button id="downloadBtn">Download Image</button>
+          <button id="resetBtn">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
