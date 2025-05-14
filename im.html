@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Image Scaling</title>
+    <link rel="stylesheet" href="./im.css">
+     <script src="./im.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Advanced Image Scaling</h1>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="image-upload">Select Image:</label>
+                <input type="file" id="image-upload" accept="image/*">
+            </div>
+            
+            <div class="control-group">
+                <label for="scale-factor">Scale Factor:</label>
+                <input type="range" id="scale-factor" min="1" max="500" value="100">
+                <span id="scale-value">100%</span>
+            </div>
+            
+            <div class="control-group">
+                <label for="algorithm">Scaling Algorithm:</label>
+                <select id="algorithm">
+                    <option value="nearest">Nearest Neighbor (Fast)</option>
+                    <option value="bilinear" selected>Bilinear (Quality)</option>
+                    <option value="bicubic">Bicubic (Best Quality)</option>
+                    <option value="lanczos">Lanczos (Sharp)</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="anti-aliasing">Anti-Aliasing:</label>
+                <select id="anti-aliasing">
+                    <option value="none">None</option>
+                    <option value="ssaa">SSAA (Super Sampling)</option>
+                    <option value="msaa" selected>MSAA (Multi-Sampling)</option>
+                </select>
+            </div>
+            
+            <button id="download-btn">Download Scaled Image</button>
+        </div>
+        
+        <div class="image-comparison">
+            <div class="image-container">
+                <h3>Original Image</h3>
+                <div class="image-wrapper">
+                    <canvas id="original-canvas"></canvas>
+                    <div class="image-info" id="original-info"></div>
+                </div>
+            </div>
+            
+            <div class="image-container">
+                <h3>Scaled Image</h3>
+                <div class="image-wrapper">
+                    <canvas id="scaled-canvas"></canvas>
+                    <div class="image-info" id="scaled-info"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
