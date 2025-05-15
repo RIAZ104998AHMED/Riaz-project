@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Segmentation Tool</title>
+    <link rel="stylesheet" href="./image style.css">
+    
+    <script async src="https://docs.opencv.org/4.5.5/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+    <script src="./image segment.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Segmentation Tool</h1>
+        
+        <div class="controls">
+            <input type="file" id="imageUpload" accept="image/*">
+            <select id="segmentationMode">
+                <option value="geometric">Geometric Shapes</option>
+                <option value="contours">Object Contours</option>
+                <option value="advanced">Advanced Segmentation</option>
+            </select>
+            <button id="processBtn">Process Image</button>
+            <button id="resetBtn">Reset</button>
+            <button id="downloadBtn">Download Result</button>
+        </div>
+        
+        <div class="image-container">
+            <div class="image-box">
+                <h3>Original Image</h3>
+                <canvas id="originalCanvas"></canvas>
+            </div>
+            <div class="image-box">
+                <h3>Segmented Image</h3>
+                <canvas id="segmentedCanvas"></canvas>
+            </div>
+        </div>
+        
+        <div class="status" id="status">Loading OpenCV.js, please wait...</div>
+    </div>
+</body>
+</html>
