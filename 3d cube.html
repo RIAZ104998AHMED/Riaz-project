@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Cube Viewer</title>
+    <link rel="stylesheet" href="./3d style.css">
+       <script src="./3d design.js"></script>
+</head>
+<body>
+    <h1>3D Cube Viewer</h1>
+    
+    <div id="container">
+        <div id="cube"></div>
+    </div>
+    
+    <div class="controls">
+        <div class="control-group">
+            <label for="x-rotation">X-axis:</label>
+            <input type="range" id="x-rotation" min="0" max="360" value="0">
+            <span id="x-value">0°</span>
+        </div>
+        
+        <div class="control-group">
+            <label for="y-rotation">Y-axis:</label>
+            <input type="range" id="y-rotation" min="0" max="360" value="0">
+            <span id="y-value">0°</span>
+        </div>
+        
+        <div class="control-group">
+            <label for="z-rotation">Z-axis:</label>
+            <input type="range" id="z-rotation" min="0" max="360" value="0">
+            <span id="z-value">0°</span>
+        </div>
+        
+        <div class="control-group">
+            <label for="faces">Faces:</label>
+            <select id="faces">
+                <option value="4">Tetrahedron (4)</option>
+                <option value="6" selected>Cube (6)</option>
+                <option value="8">Octahedron (8)</option>
+                <option value="12">Dodecahedron (12)</option>
+                <option value="20">Icosahedron (20)</option>
+            </select>
+            <button id="update-faces">Update</button>
+        </div>
+    </div>
+
+ 
+</body>
+</html>

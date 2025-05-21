@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Transformation with Bilinear/Trilinear Filtering</title>
+    <link rel="stylesheet" href="b .css">
+    
+    <script src="t.js"></script>
+</head>
+<body>
+    <h1>Image Transformation with Bilinear/Trilinear Filtering</h1>
+    
+    <div class="info">
+        <p>Specify 3 points on the original image and their corresponding positions on the transformed image.</p>
+        <p>The system will automatically use bilinear filtering when enlarging and trilinear filtering when reducing.</p>
+    </div>
+    
+    <div class="container">
+        <div class="image-container">
+            <h2>Original Image <span id="originalPointsStatus">(Select 3 points)</span></h2>
+            <canvas id="originalCanvas"></canvas>
+        </div>
+        <div class="image-container">
+            <h2>Transformed Image <span id="transformedPointsStatus">(Select 3 points)</span></h2>
+            <canvas id="transformedCanvas"></canvas>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <div class="button-group">
+            <button id="uploadBtn">Upload Image</button>
+            <button id="transformBtn" disabled>Apply Transformation</button>
+            <button id="resetBtn">Reset Points</button>
+            <button id="downloadBtn">Download Result</button>
+        </div>
+    </div>
+
+    <input type="file" id="fileInput" accept="image/*" style="display:none">
+    
+</body>
+</html>
