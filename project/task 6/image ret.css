@@ -53,6 +53,12 @@ button:hover {
     border-color: #2980b9;
 }
 
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #bdc3c7;
+}
+
 .tool-options {
     display: flex;
     align-items: center;
@@ -89,7 +95,7 @@ input[type="range"] {
 }
 
 #overlay-canvas {
-    pointer-events: none;
+    pointer-events: auto; /* Changed from 'none' to enable drawing */
 }
 
 .instructions {
@@ -107,22 +113,6 @@ input[type="range"] {
 .instructions ol {
     margin-left: 20px;
     margin-bottom: 15px;
-}
-
-.tool-tips {
-    background-color: #e8f4f8;
-    padding: 10px 15px;
-    border-radius: 5px;
-    border-left: 4px solid #3498db;
-}
-
-.tool-tips h4 {
-    margin-bottom: 8px;
-    color: #2980b9;
-}
-
-.tool-tips p {
-    margin-bottom: 5px;
 }
 
 @media (max-width: 768px) {

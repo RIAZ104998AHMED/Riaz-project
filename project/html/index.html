@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Rotation</title>
+    <title>Image Rotation Tool</title>
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/rotation.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Image Rotation</h1>
+        <h1>Image Rotation Tool</h1>
         
         <!-- File Upload -->
         <div class="upload-section">
-            <input type="file" id="imageUpload" accept="image/*">
+            <input type="file" id="imageUpload" accept="image/*" style="display: none;">
             <label for="imageUpload" class="upload-btn">Choose Image</label>
             <p id="fileInfo">No file selected</p>
         </div>
@@ -32,7 +32,7 @@
 
             <div class="advanced-controls">
                 <h3>Advanced Rotation (Any angle)</h3>
-                <input type="number" id="angleInput" min="0" max="360" value="0" class="angle-input">
+                <input type="number" id="angleInput" min="0" max="360" value="0" class="angle-input">°
                 <button id="advancedRotateBtn">Rotate</button>
             </div>
         </div>

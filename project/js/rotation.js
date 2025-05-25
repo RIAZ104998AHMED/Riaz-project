@@ -11,16 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const downloadBtn = document.getElementById('downloadBtn');
 
     let uploadedImage = null;
+    let currentRotation = 0;
 
     // Initialize canvas with placeholder
-    canvas.width = 300;
-    canvas.height = 200;
-    ctx.fillStyle = '#f0f0f0';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#999';
-    ctx.textAlign = 'center';
-    ctx.font = '16px Arial';
-    ctx.fillText('Upload an image to begin', canvas.width/2, canvas.height/2);
+    function initCanvas() {
+        canvas.width = 300;
+        canvas.height = 200;
+        ctx.fillStyle = '#f0f0f0';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#999';
+        ctx.textAlign = 'center';
+        ctx.font = '16px Arial';
+        ctx.fillText('Upload an image to begin', canvas.width/2, canvas.height/2);
+    }
+
+    initCanvas();
 
     // Event Listeners
     imageUpload.addEventListener('change', handleImageUpload);
@@ -66,8 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function resetCanvasToOriginal() {
         if (!uploadedImage) return;
         
+        currentRotation = 0;
         canvas.width = uploadedImage.width;
         canvas.height = uploadedImage.height;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(uploadedImage, 0, 0);
     }
 
@@ -77,21 +84,16 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const radians = degrees * Math.PI / 180;
+        currentRotation += degrees;
+        currentRotation %= 360;
+        
+        const radians = currentRotation * Math.PI / 180;
         const sin = Math.abs(Math.sin(radians));
         const cos = Math.abs(Math.cos(radians));
 
         // Calculate new canvas size
-        let newWidth, newHeight;
-        if (degrees % 90 === 0) {
-            // Simple rotation (90° increments)
-            newWidth = degrees % 180 === 0 ? uploadedImage.width : uploadedImage.height;
-            newHeight = degrees % 180 === 0 ? uploadedImage.height : uploadedImage.width;
-        } else {
-            // Advanced rotation (any angle)
-            newWidth = Math.floor(uploadedImage.width * cos + uploadedImage.height * sin);
-            newHeight = Math.floor(uploadedImage.width * sin + uploadedImage.height * cos);
-        }
+        const newWidth = Math.floor(uploadedImage.width * cos + uploadedImage.height * sin);
+        const newHeight = Math.floor(uploadedImage.width * sin + uploadedImage.height * cos);
 
         // Create temporary canvas for rotation
         const tempCanvas = document.createElement('canvas');
@@ -107,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update main canvas
         canvas.width = newWidth;
         canvas.height = newHeight;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(tempCanvas, 0, 0);
 
         downloadBtn.disabled = false;
@@ -120,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const link = document.createElement('a');
-            link.download = `rotated-${new Date().getTime()}.png`;
+            link.download = `rotated-image-${currentRotation}deg.png`;
             link.href = canvas.toDataURL('image/png');
             document.body.appendChild(link);
             link.click();

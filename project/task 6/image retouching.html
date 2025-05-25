@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Retouching Tool</title>
-    <link rel="stylesheet" href="image ret.css">
-      <script src="image retou.js"></script>
+    <link rel="stylesheet" href="./image ret.css">
+    
+    <script src="./image retou.js"></script>
 </head>
 <body>
     <div class="container">
@@ -39,8 +40,8 @@
                 <span id="intensity-value">50</span>
             </div>
             
-            <button id="undo-btn">Undo</button>
-            <button id="redo-btn">Redo</button>
+            <button id="undo-btn" disabled>Undo</button>
+            <button id="redo-btn" disabled>Redo</button>
             <button id="download-btn">Download Result</button>
         </div>
         
@@ -59,15 +60,6 @@
                 <li>Use Undo/Redo to correct mistakes</li>
                 <li>Download your retouched image when finished</li>
             </ol>
-            
-            <div class="tool-tips">
-                <h4>Tool Tips:</h4>
-                <p><strong>Blur:</strong> Softens selected areas</p>
-                <p><strong>Clone Stamp:</strong> Click to set source point, then paint to clone</p>
-                <p><strong>Lighten/Darken:</strong> Adjusts brightness in selected areas</p>
-                <p><strong>Sharpen:</strong> Enhances edges in selected areas</p>
-                <p><strong>Red Eye Reduction:</strong> Fixes red-eye in portraits</p>
-            </div>
         </div>
     </div>
 
