@@ -4,45 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Rotation Tool</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="/js/rotation.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./rotation.js"></script>
 </head>
 <body>
     <div class="container">
         <h1>Image Rotation Tool</h1>
         
-        <!-- File Upload -->
-        <div class="upload-section">
-            <input type="file" id="imageUpload" accept="image/*" style="display: none;">
-            <label for="imageUpload" class="upload-btn">Choose Image</label>
-            <p id="fileInfo">No file selected</p>
-        </div>
-
-        <!-- Rotation Controls -->
         <div class="controls">
-            <div class="simple-controls">
-                <h3>Simple Rotation (90° increments)</h3>
-                <select id="simpleDegrees">
+            <div class="control-group">
+                <label for="imageUpload">Select Image:</label>
+                <input type="file" id="imageUpload" accept="image/*">
+            </div>
+            
+            <div class="control-group">
+                <label for="presetRotation">Preset Rotation:</label>
+                <select id="presetRotation">
+                    <option value="0">0°</option>
                     <option value="90">90°</option>
                     <option value="180">180°</option>
                     <option value="270">270°</option>
+                    <option value="custom">Custom Angle...</option>
                 </select>
-                <button id="simpleRotateBtn">Rotate</button>
             </div>
-
-            <div class="advanced-controls">
-                <h3>Advanced Rotation (Any angle)</h3>
-                <input type="number" id="angleInput" min="0" max="360" value="0" class="angle-input">°
-                <button id="advancedRotateBtn">Rotate</button>
+            
+            <div class="control-group hidden" id="customAngleGroup">
+                <label for="customAngle">Custom Angle (degrees):</label>
+                <input type="number" id="customAngle" min="0" max="360" value="45">
             </div>
+            
+            <button id="rotateBtn">Rotate Image</button>
+            <button id="downloadBtn">Download Result</button>
         </div>
-
-        <!-- Canvas for Results -->
-        <div class="result">
-            <h3>Result</h3>
-            <canvas id="canvas"></canvas>
-            <button id="downloadBtn" disabled>Download Image</button>
+        
+        <div class="advanced-controls">
+            <label>
+                <input type="checkbox" id="autoResize">
+                Automatically resize canvas to fit rotated image
+            </label>
+        </div>
+        
+        <div class="image-container">
+            <div class="image-wrapper">
+                <h3>Original Image</h3>
+                <canvas id="originalCanvas"></canvas>
+            </div>
+            <div class="image-wrapper">
+                <h3>Rotated Image</h3>
+                <canvas id="rotatedCanvas"></canvas>
+            </div>
         </div>
     </div>
+
 </body>
 </html>
