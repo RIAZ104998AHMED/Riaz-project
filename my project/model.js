@@ -16,18 +16,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const bioSection = document.getElementById('bio');
     const algorithmsMenu = document.getElementById('algorithms-menu');
     const viewAlgorithmsBtn = document.getElementById('view-algorithms');
+    const backButton = document.getElementById('back-button');
     
     // Navigation functions
     viewAlgorithmsBtn.addEventListener('click', function() {
         bioSection.classList.remove('active');
         algorithmsMenu.classList.add('active');
+        backButton.style.display = 'block';
+    });
+    
+    backButton.addEventListener('click', function() {
+        algorithmsMenu.classList.remove('active');
+        bioSection.classList.add('active');
+        backButton.style.display = 'none';
     });
     
     // Algorithm card click handler
     document.querySelectorAll('.algorithm-card').forEach(card => {
         card.addEventListener('click', function() {
             const algoName = this.getAttribute('data-algo');
-            window.open(algorithmUrls[algoName], '_blank');
+            if (algorithmUrls[algoName]) {
+                window.open(algorithmUrls[algoName], '_blank');
+            }
         });
     });
 });
